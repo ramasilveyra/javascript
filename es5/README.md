@@ -1635,6 +1635,7 @@
   - **Adult Swim**: [adult-swim/javascript](https://github.com/adult-swim/javascript)
   - **Airbnb**: [airbnb/javascript](https://github.com/airbnb/javascript)
   - **Apartmint**: [apartmint/javascript](https://github.com/apartmint/javascript)
+  - **Auth0**: [auth0/javascript](https://github.com/auth0/javascript)
   - **Avalara**: [avalara/javascript](https://github.com/avalara/javascript)
   - **Billabong**: [billabong/javascript](https://github.com/billabong/javascript)
   - **Compass Learning**: [compasslearning/javascript-style-guide](https://github.com/compasslearning/javascript-style-guide)
