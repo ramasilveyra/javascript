@@ -1991,7 +1991,7 @@ Other Style Guides
     const story = [
       once,
       upon,
-      aTime,
+      aTime
     ];
 
     // bad
@@ -2007,51 +2007,33 @@ Other Style Guides
       firstName: 'Ada',
       lastName: 'Lovelace',
       birthYear: 1815,
-      superPower: 'computers',
+      superPower: 'computers'
     };
     ```
 
-  <a name="commas--dangling"></a><a name="19.2"></a>
-  - [19.2](#commas--dangling) Additional trailing comma: **Yup.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html) jscs: [`requireTrailingComma`](http://jscs.info/rule/requireTrailingComma)
+  - [19.2](#19.2) <a name='19.2'></a> Additional trailing comma: **Nope.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html) jscs: [`requireTrailingComma`](http://jscs.info/rule/requireTrailingComma)
 
-    > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the [trailing comma problem](es5/README.md#commas) in legacy browsers.
+    > Although this leads to cleaner git diffs, it looks strange to see a trailing comma on the last element. So we favor code readability over cleaner diffs, because we need to deal with code a lot more than we need to deal with diffs.
 
     ```javascript
-    // bad - git diff without trailing comma
-    const hero = {
-         firstName: 'Florence',
-    -    lastName: 'Nightingale'
-    +    lastName: 'Nightingale',
-    +    inventorOf: ['coxcomb graph', 'modern nursing']
-    };
-
-    // good - git diff with trailing comma
-    const hero = {
-         firstName: 'Florence',
-         lastName: 'Nightingale',
-    +    inventorOf: ['coxcomb chart', 'modern nursing'],
-    };
-
     // bad
     const hero = {
       firstName: 'Dana',
-      lastName: 'Scully'
+      lastName: 'Scully',
     };
-
     const heroes = [
       'Batman',
-      'Superman'
+      'Superman',
     ];
 
     // good
     const hero = {
       firstName: 'Dana',
-      lastName: 'Scully',
+      lastName: 'Scully'
     };
-
     const heroes = [
       'Batman',
-      'Superman',
+      'Superman'
     ];
     ```
 
