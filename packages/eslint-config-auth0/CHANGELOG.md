@@ -1,3 +1,7 @@
+1.0.1 / 2016-04-19
+==================
+- Fix disallow of trailing comma enforcement [`comma-dangle`][comma-dangle] and make package pass our lint rules
+
 1.0.0 / 2016-03-21
 ==================
 - Fork from [eslint-config-airbnb](https://github.com/airbnb/javascript) v6.1.0
