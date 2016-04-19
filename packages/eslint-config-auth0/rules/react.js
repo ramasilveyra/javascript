@@ -27,7 +27,7 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
     'react/jsx-handler-names': [0, {
       'eventHandlerPrefix': 'handle',
-      'eventHandlerPropPrefix': 'on',
+      'eventHandlerPropPrefix': 'on'
     }],
     // Validate props indentation in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
@@ -43,7 +43,7 @@ module.exports = {
     'react/jsx-no-bind': [2, {
       'ignoreRefs': false,
       'allowArrowFunctions': false,
-      'allowBind': false,
+      'allowBind': false
     }],
     // Prevent duplicate props in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
@@ -61,13 +61,13 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md
     'react/sort-prop-types': [0, {
       'ignoreCase': false,
-      'callbacksLast': false,
+      'callbacksLast': false
     }],
     // Enforce props alphabetical sorting
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
     'react/jsx-sort-props': [0, {
       'ignoreCase': false,
-      'callbacksLast': false,
+      'callbacksLast': false
     }],
     // Prevent React to be incorrectly marked as unused
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-uses-react.md
@@ -145,6 +145,6 @@ module.exports = {
       declaration: true,
       assignment: true,
       return: true
-    }],
+    }]
   }
 };
