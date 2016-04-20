@@ -20,8 +20,8 @@ module.exports = {
     // require space before/after arrow function's arrow
     // https://github.com/eslint/eslint/blob/master/docs/rules/arrow-spacing.md
     'arrow-spacing': [2, { 'before': true, 'after': true }],
-    // require trailing commas in multiline object literals
-    'comma-dangle': [2, 'always-multiline'],
+    // disallow trailing commas in object literals
+    'comma-dangle': [2, 'never'],
     // verify super() callings in constructors
     'constructor-super': 0,
     // enforce the spacing around the * in generator functions
@@ -31,7 +31,7 @@ module.exports = {
     // disallow arrow functions where they could be confused with comparisons
     // http://eslint.org/docs/rules/no-confusing-arrow
     'no-confusing-arrow': [2, {
-      'allowParens': true,
+      'allowParens': true
     }],
     // disallow modifying variables that are declared using const
     'no-const-assign': 2,
