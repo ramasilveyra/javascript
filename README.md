@@ -18,7 +18,7 @@ Other Style Guides
   1. [Strings](#strings)
   1. [Functions](#functions)
   1. [Arrow Functions](#arrow-functions)
-  1. [Constructors](#constructors)
+  1. [Classes & Constructors](#classes--constructors)
   1. [Modules](#modules)
   1. [Iterators and Generators](#iterators-and-generators)
   1. [Properties](#properties)
@@ -544,6 +544,20 @@ Other Style Guides
   <a name="strings--eval"></a><a name="6.5"></a>
   - [6.5](#strings--eval) Never use `eval()` on a string, it opens too many vulnerabilities.
 
+  <a name="strings--escaping"></a>
+  - [6.6](#strings--escaping) Do not unnecessarily escape characters in strings. eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
+
+    > Why? Backslashes harm readability, thus they should only be present when necessary.
+
+    ```javascript
+    // bad
+    const foo = '\'this\' \i\s \"quoted\"';
+
+    // good
+    const foo = '\'this\' is "quoted"';
+    const foo = `'this' is "quoted"`;
+    ```
+
 **[⬆ back to top](#table-of-contents)**
 
 
@@ -565,7 +579,7 @@ Other Style Guides
     ```
 
   <a name="functions--iife"></a><a name="7.2"></a>
-  - [7.2](#functions--iife) Immediately invoked function expressions: eslint: [`wrap-iife`](http://eslint.org/docs/rules/wrap-iife.html) jscs: [`requireParenthesesAroundIIFE`](http://jscs.info/rule/requireParenthesesAroundIIFE)
+  - [7.2](#functions--iife) Wrap immediately invoked function expressions in parentheses. eslint: [`wrap-iife`](http://eslint.org/docs/rules/wrap-iife.html) jscs: [`requireParenthesesAroundIIFE`](http://jscs.info/rule/requireParenthesesAroundIIFE)
 
     > Why? An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
 
@@ -615,7 +629,7 @@ Other Style Guides
     ```
 
   <a name="es6-rest"></a><a name="7.6"></a>
-  - [7.6](#es6-rest) Never use `arguments`, opt to use rest syntax `...` instead. [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
+  - [7.6](#es6-rest) Never use `arguments`, opt to use rest syntax `...` instead. eslint: [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
 
     > Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
 
@@ -877,7 +891,7 @@ Other Style Guides
 **[⬆ back to top](#table-of-contents)**
 
 
-## Constructors
+## Classes & Constructors
 
   <a name="constructors--use-class"></a><a name="9.1"></a>
   - [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.
@@ -991,7 +1005,7 @@ Other Style Guides
     ```
 
   <a name="constructors--no-useless"></a><a name="9.5"></a>
-  - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
+  - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
     // bad
@@ -1018,6 +1032,30 @@ Other Style Guides
       }
     }
     ```
+
+  <a name="classes--no-duplicate-members"></a>
+  - [9.6](#classes--no-duplicate-members) Avoid duplicate class members. eslint: [`no-dupe-class-members`](http://eslint.org/docs/rules/no-dupe-class-members)
+
+    > Why? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
+
+    ```javascript
+    // bad
+    class Foo {
+      bar() { return 1; }
+      bar() { return 2; }
+    }
+
+    // good
+    class Foo {
+      bar() { return 1; }
+    }
+
+    // good
+    class Foo {
+      bar() { return 2; }
+    }
+    ```
+
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -1070,6 +1108,27 @@ Other Style Guides
     // filename es6.js
     import { es6 } from './Auth0StyleGuide';
     export default es6;
+    ```
+
+  <a name="modules--no-duplicate-imports"></a>
+  - [10.4](#modules--no-duplicate-imports) Only import from a path in one place.
+ eslint: [`no-duplicate-imports`](http://eslint.org/docs/rules/no-duplicate-imports)
+    > Why? Having multiple lines that import from the same path can make code harder to maintain.
+
+    ```javascript
+    // bad
+    import foo from 'foo';
+    // … some other imports … //
+    import { named1, named2 } from 'foo';
+
+    // good
+    import foo, { named1, named2 } from 'foo';
+
+    // good
+    import foo, {
+      named1,
+      named2,
+    } from 'foo';
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1702,7 +1761,7 @@ Other Style Guides
     ```
 
   <a name="whitespace--around-keywords"></a><a name="18.3"></a>
-  - [18.3](#whitespace--around-keywords) Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations. eslint: [`space-after-keywords`](http://eslint.org/docs/rules/space-after-keywords.html), [`space-before-keywords`](http://eslint.org/docs/rules/space-before-keywords.html) jscs:  [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
+  - [18.3](#whitespace--around-keywords) Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations. eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing.html) jscs: [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
 
     ```javascript
     // bad
@@ -2623,6 +2682,7 @@ Other Style Guides
   - **Bisk**: [bisk/javascript](https://github.com/Bisk/javascript/)
   - **Blendle**: [blendle/javascript](https://github.com/blendle/javascript)
   - **Brainshark**: [brainshark/javascript](https://github.com/brainshark/javascript)
+  - **Chartboost**: [ChartBoost/javascript-style-guide](https://github.com/ChartBoost/javascript-style-guide)
   - **ComparaOnline**: [comparaonline/javascript](https://github.com/comparaonline/javascript-style-guide)
   - **Compass Learning**: [compasslearning/javascript-style-guide](https://github.com/compasslearning/javascript-style-guide)
   - **DailyMotion**: [dailymotion/javascript](https://github.com/dailymotion/javascript)
@@ -2646,6 +2706,7 @@ Other Style Guides
   - **Jam3**: [Jam3/Javascript-Code-Conventions](https://github.com/Jam3/Javascript-Code-Conventions)
   - **JeopardyBot**: [kesne/jeopardy-bot](https://github.com/kesne/jeopardy-bot/blob/master/STYLEGUIDE.md)
   - **JSSolutions**: [JSSolutions/javascript](https://github.com/JSSolutions/javascript)
+  - **KickorStick**: [kickorstick/javascript](https://github.com/kickorstick/javascript)
   - **Kinetica Solutions**: [kinetica/javascript](https://github.com/kinetica/Javascript-style-guide)
   - **Mighty Spring**: [mightyspring/javascript](https://github.com/mightyspring/javascript)
   - **MinnPost**: [MinnPost/javascript](https://github.com/MinnPost/javascript)
@@ -2668,8 +2729,10 @@ Other Style Guides
   - **Shutterfly**: [shutterfly/javascript](https://github.com/shutterfly/javascript)
   - **Springload**: [springload/javascript](https://github.com/springload/javascript)
   - **StudentSphere**: [studentsphere/javascript](https://github.com/studentsphere/guide-javascript)
+  - **SysGarage**: [sysgarage/javascript-style-guide](https://github.com/sysgarage/javascript-style-guide)
   - **Target**: [target/javascript](https://github.com/target/javascript)
   - **TheLadders**: [TheLadders/javascript](https://github.com/TheLadders/javascript)
+  - **The Nerdery**: [thenerdery/javascript-standards](https://github.com/thenerdery/javascript-standards)
   - **T4R Technology**: [T4R-Technology/javascript](https://github.com/T4R-Technology/javascript)
   - **VoxFeed**: [VoxFeed/javascript-style-guide](https://github.com/VoxFeed/javascript-style-guide)
   - **WeBox Studio**: [weboxstudio/javascript](https://github.com/weboxstudio/javascript)
