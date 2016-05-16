@@ -1,3 +1,7 @@
+2.0.0 / 2016-05-15
+==================
+- Merge commits from [eslint-config-airbnb v7.0.0](https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb/CHANGELOG.md#700--2016-04-11) and solve conflicts.
+
 1.0.1 / 2016-04-19
 ==================
 - Fix disallow of trailing comma enforcement [`comma-dangle`][comma-dangle] and make package pass our lint rules
