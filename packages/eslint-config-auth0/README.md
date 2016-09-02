@@ -27,6 +27,7 @@ Our default export contains all of our ESLint rules, including ECMAScript 6+ and
   ```
 
 2. Add `"extends": "auth0"` to your .eslintrc
+
 ### eslint-config-auth0/base
 
 This entry point is deprecated. See [eslint-config-auth0-base](https://npmjs.com/eslint-config-auth0-base).
