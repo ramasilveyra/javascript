@@ -29,7 +29,8 @@ module.exports = {
     // enforce the spacing around the * in generator functions
     'generator-star-spacing': 0,
     // disallow modifying variables of class declarations
-    'no-class-assign': 0,
+    // http://eslint.org/docs/rules/no-class-assign
+    'no-class-assign': 2,
     // disallow arrow functions where they could be confused with comparisons
     // http://eslint.org/docs/rules/no-confusing-arrow
     'no-confusing-arrow': [2, {
@@ -110,7 +111,10 @@ module.exports = {
     // Forbid the use of extraneous packages
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
     // TODO: enable
-    'import/no-extraneous-dependencies': [0, { 'devDependencies': false }],
+    'import/no-extraneous-dependencies': [0, {
+      'devDependencies': false,
+      'optionalDependencies': false
+    }],
     // ensure imports point to files/modules that can be resolved
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
     'import/no-unresolved': [2, { 'commonjs': true }],
@@ -123,16 +127,14 @@ module.exports = {
     'import/no-commonjs': 0,
     // disallow AMD require/define
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-amd.md
-    // TODO: enable
-    'import/no-amd': 0,
+    'import/no-amd': 2,
     // disallow non-import statements appearing before import statements
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/imports-first.md
     // TODO: enable?
     'import/imports-first': [0, 'absolute-first'],
     // disallow duplicate imports
-    // TODO: enable
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
-    'import/no-duplicates': 0,
+    'import/no-duplicates': 2,
     // disallow use of jsdoc-marked-deprecated imports
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-deprecated.md
     'import/no-deprecated': 0,
@@ -152,7 +154,15 @@ module.exports = {
     // TODO: enable?
     'import/order': [0, {
       'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-    }]
+      'newlines-between': 'never'
+    }],
+    // Require a newline after the last import/require in a group
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md
+    // TODO: enable
+    'import/newline-after-import': 0,
+    // Forbid mutable exports
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md
+    'import/no-mutable-exports': 2
   },
   'settings': {
     'import/resolver': {

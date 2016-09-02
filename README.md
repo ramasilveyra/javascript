@@ -322,7 +322,7 @@ Other Style Guides
     ```
 
   <a name="arrays--push"></a><a name="4.2"></a>
-  - [4.2](#arrays--push) Use Array#push instead of direct assignment to add items to an array.
+  - [4.2](#arrays--push) Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
 
     ```javascript
     const someStack = [];
@@ -352,7 +352,7 @@ Other Style Guides
     ```
 
   <a name="arrays--from"></a><a name="4.4"></a>
-  - [4.4](#arrays--from) To convert an array-like object to an array, use Array#from.
+  - [4.4](#arrays--from) To convert an array-like object to an array, use [Array.from](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
@@ -1133,6 +1133,21 @@ Other Style Guides
       named1,
       named2,
     } from 'foo';
+    ```
+
+  <a name="modules--no-mutable-exports"></a>
+  - [10.5](#modules--no-mutable-exports) Do not export mutable bindings.
+ eslint: [`import/no-mutable-exports`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
+    > Why? Mutation should be avoided in general, but in particular when exporting mutable bindings. While this technique may be needed for some special cases, in general, only constant references should be exported.
+
+    ```javascript
+    // bad
+    let foo = 3;
+    export { foo }
+
+    // good
+    const foo = 3;
+    export { foo }
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -2694,6 +2709,7 @@ Other Style Guides
 
   This is a list of organizations that are using this style guide. Send us a pull request and we'll add you to the list.
 
+  - **4Catalyzer**: [4Catalyzer/javascript](https://github.com/4Catalyzer/javascript)
   - **Aan Zee**: [AanZee/javascript](https://github.com/AanZee/javascript)
   - **Adult Swim**: [adult-swim/javascript](https://github.com/adult-swim/javascript)
   - **Airbnb**: [airbnb/javascript](https://github.com/airbnb/javascript)
