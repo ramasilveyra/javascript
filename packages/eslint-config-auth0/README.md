@@ -12,9 +12,21 @@ We export three ESLint configurations for your usage.
 
 Our default export contains all of our ESLint rules, including ECMAScript 6+ and React. It requires `eslint`, `eslint-plugin-import`, `eslint-plugin-react`, and `eslint-plugin-jsx-a11y`.
 
-1. `npm install --save-dev eslint-config-auth0 eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y eslint`
-2. add `"extends": "auth0"` to your .eslintrc
+1. Ensure packages are installed with correct version numbers by running:
+  ```sh
+  (
+    export PKG=eslint-config-auth0;
+    npm info "$PKG" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG"
+  )
+  ```
 
+  Which produces and runs a command like:
+
+  ```sh
+  npm install --save-dev eslint-config-auth0 eslint@^2.9.0 eslint-plugin-jsx-a11y@^1.2.0 eslint-plugin-import@^1.7.0 eslint-plugin-react@^5.0.1
+  ```
+
+2. Add `"extends": "auth0"` to your .eslintrc
 ### eslint-config-auth0/base
 
 This entry point is deprecated. See [eslint-config-auth0-base](https://npmjs.com/eslint-config-auth0-base).

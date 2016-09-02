@@ -28,6 +28,11 @@ module.exports = {
     // enforce newline at the end of file, with no multiple empty lines
     'eol-last': 2,
 
+    // enforce spacing between functions and their invocations
+    // http://eslint.org/docs/rules/func-call-spacing
+    // TODO: enable, semver-minor
+    'func-call-spacing': [0, 'never'],
+
     // require function expressions to have a name
     'func-names': 1,
 
@@ -51,7 +56,7 @@ module.exports = {
 
     // specify whether double or single quotes should be used in JSX attributes
     // http://eslint.org/docs/rules/jsx-quotes
-    'jsx-quotes': 0,
+    'jsx-quotes': [0, 'prefer-double'],
 
     // enforces spacing between keys and values in object literal properties
     'key-spacing': [2, { beforeColon: false, afterColon: true }],
@@ -68,7 +73,8 @@ module.exports = {
     }],
 
     // disallow mixed 'LF' and 'CRLF' as linebreaks
-    'linebreak-style': 0,
+    // http://eslint.org/docs/rules/linebreak-style
+    'linebreak-style': [2, 'unix'],
 
     // enforces empty lines around comments
     'lines-around-comment': 0,
@@ -104,11 +110,16 @@ module.exports = {
     // http://eslint.org/docs/rules/max-statements-per-line
     'max-statements-per-line': [0, { max: 1 }],
 
+    // require multiline ternary
+    // http://eslint.org/docs/rules/multiline-ternary
+    'multiline-ternary': 0,
+
     // require a capital letter for constructors
     'new-cap': [2, { newIsCap: true }],
 
     // disallow the omission of parentheses when invoking a constructor with no arguments
-    'new-parens': 0,
+    // http://eslint.org/docs/rules/new-parens
+    'new-parens': 2,
 
     // allow/disallow an empty newline after var statement
     'newline-after-var': 0,
@@ -125,16 +136,20 @@ module.exports = {
     'no-array-constructor': 2,
 
     // disallow use of bitwise operators
+    // http://eslint.org/docs/rules/no-bitwise
+    // TODO: enable
     'no-bitwise': 0,
 
     // disallow use of the continue statement
-    'no-continue': 0,
+    // http://eslint.org/docs/rules/no-continue
+    'no-continue': 2,
 
     // disallow comments inline after code
     'no-inline-comments': 0,
 
     // disallow if as the only statement in an else block
-    'no-lonely-if': 0,
+    // http://eslint.org/docs/rules/no-lonely-if
+    'no-lonely-if': 2,
 
     // disallow un-paren'd mixes of different operators
     // http://eslint.org/docs/rules/no-mixed-operators
@@ -181,6 +196,10 @@ module.exports = {
     // disallow space between function identifier and application
     'no-spaced-func': 2,
 
+    // disallow tab characters entirely
+    // TODO: enable
+    'no-tabs': 0,
+
     // disallow the use of ternary operators
     'no-ternary': 0,
 
@@ -224,7 +243,8 @@ module.exports = {
     'one-var-declaration-per-line': [2, 'always'],
 
     // require assignment operator shorthand where possible or prohibit it entirely
-    'operator-assignment': 0,
+    // http://eslint.org/docs/rules/operator-assignment
+    'operator-assignment': [2, 'always'],
 
     // enforce operators to be placed before or after line breaks
     'operator-linebreak': 0,
@@ -249,6 +269,9 @@ module.exports = {
     // enforce spacing before and after semicolons
     'semi-spacing': [2, { before: false, after: true }],
 
+    // requires object keys to be sorted
+    'sort-keys': [0, 'asc', { caseSensitive: false, natural: true }],
+
     // sort variables within the same declaration block
     'sort-vars': 0,
 
@@ -266,7 +289,13 @@ module.exports = {
     'space-infix-ops': 2,
 
     // Require or disallow spaces before/after unary operators
-    'space-unary-ops': 0,
+    // http://eslint.org/docs/rules/space-unary-ops
+    'space-unary-ops': [2, {
+      words: true,
+      nonwords: false,
+      overrides: {
+      },
+    }],
 
     // require or disallow a space immediately following the // or /* in a comment
     'spaced-comment': [2, 'always', {

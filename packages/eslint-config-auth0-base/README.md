@@ -12,15 +12,41 @@ We export two ESLint configurations for your usage.
 
 Our default export contains all of our ESLint rules, including ECMAScript 6+. It requires `eslint` and `eslint-plugin-import`.
 
-1. `npm install --save-dev eslint-config-auth0-base eslint-plugin-import eslint`
-2. add `"extends": "auth0-base"` to your .eslintrc
+1. Ensure packages are installed with correct version numbers by running:
+  ```sh
+  (
+    export PKG=eslint-config-auth0-base;
+    npm info "$PKG" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG"
+  )
+  ```
+
+  Which produces and runs a command like:
+
+  ```sh
+    npm install --save-dev eslint-config-auth0-base eslint@^3.0.1 eslint-plugin-import@^1.10.3
+  ```
+
+2. Add `"extends": "auth0-base"` to your .eslintrc
 
 ### eslint-config-auth0-base/legacy
 
 Lints ES5 and below. Requires `eslint` and `eslint-plugin-import`.
 
-1. `npm install --save-dev eslint-config-auth0-base eslint-plugin-import eslint`
-2. add `"extends": "auth0-base/legacy"` to your .eslintrc
+1. Ensure packages are installed with correct version numbers by running:
+  ```sh
+  (
+    export PKG=eslint-config-auth0-base;
+    npm info "$PKG" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG"
+  )
+  ```
+
+  Which produces and runs a command like:
+
+  ```sh
+  npm install --save-dev eslint-config-auth0-base eslint@^3.0.1 eslint-plugin-import@^1.10.3
+  ```
+
+2. Add `"extends": "auth0-base/legacy"` to your .eslintrc
 
 See [Auth0's overarching ESLint config](https://npmjs.com/eslint-config-auth0), [Auth0's Javascript styleguide](https://github.com/auth0/javascript), and the [ESlint config docs](http://eslint.org/docs/user-guide/configuring#extending-configuration-files) for more information.
 
