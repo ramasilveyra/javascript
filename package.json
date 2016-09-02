@@ -4,11 +4,14 @@
   "description": "A mostly reasonable approach to JavaScript.",
   "scripts": {
     "preinstall": "npm run install:config && npm run install:config:base",
-    "install:config": "cd packages/eslint-config-auth0 && npm install",
-    "install:config:base": "cd packages/eslint-config-auth0-base && npm install",
+    "install:config": "cd packages/eslint-config-auth0 && npm prune && npm install",
+    "install:config:base": "cd packages/eslint-config-auth0-base && npm prune && npm install",
     "test": "npm run --silent test:config && npm run --silent test:config:base",
     "test:config": "cd packages/eslint-config-auth0; npm test",
-    "test:config:base": "cd packages/eslint-config-auth0-base; npm test"
+    "test:config:base": "cd packages/eslint-config-auth0-base; npm test",
+    "travis": "npm run --silent travis:config && npm run --silent travis:config:base",
+    "travis:config": "cd packages/eslint-config-auth0; npm run travis",
+    "travis:config:base": "cd packages/eslint-config-auth0-base; npm run travis"
   },
   "repository": {
     "type": "git",
