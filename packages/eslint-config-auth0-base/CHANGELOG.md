@@ -1,3 +1,7 @@
+5.0.0 / 2016-09-02
+==================
+- Merge commits from [eslint-config-airbnb-base v5.0.3](https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/CHANGELOG.md#503--2016-08-21) state and solve conflicts.
+
 4.0.0 / 2016-09-02
 ==================
 - Merge commits from [eslint-config-airbnb-base v4.0.2](https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/CHANGELOG.md#402--2016-07-14) state and solve conflicts.
