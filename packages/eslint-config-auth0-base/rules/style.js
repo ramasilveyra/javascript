@@ -2,6 +2,9 @@ module.exports = {
   'rules': {
     // enforce spacing inside array brackets
     'array-bracket-spacing': [2, 'never'],
+    // enforce spacing inside single-line blocks
+    // http://eslint.org/docs/rules/block-spacing
+    'block-spacing': [2, 'always'],
     // enforce one true brace style
     'brace-style': [2, '1tbs', { 'allowSingleLine': true }],
     // require camel case names
@@ -24,11 +27,11 @@ module.exports = {
     // (variable names, property names etc.)
     'id-length': 0,
     // this option sets a specific tab width for your code
-    // https://github.com/eslint/eslint/blob/master/docs/rules/indent.md
+    // http://eslint.org/docs/rules/indent
     'indent': [2, 2, { 'SwitchCase': 1, 'VariableDeclarator': 1 }],
     // specify whether double or single quotes should be used in JSX attributes
     // http://eslint.org/docs/rules/jsx-quotes
-    'jsx-quotes': [2, 'prefer-double'],
+    'jsx-quotes': 0,
     // enforces spacing between keys and values in object literal properties
     'key-spacing': [2, { 'beforeColon': false, 'afterColon': true }],
     // require a space before & after certain keywords
@@ -46,13 +49,16 @@ module.exports = {
     // disallow mixed 'LF' and 'CRLF' as linebreaks
     'linebreak-style': 0,
     // specify the maximum length of a line in your program
-    // https://github.com/eslint/eslint/blob/master/docs/rules/max-len.md
+    // http://eslint.org/docs/rules/max-len
     'max-len': [2, 100, 2, {
       'ignoreUrls': true,
       'ignoreComments': false
     }],
     // specify the maximum depth callbacks can be nested
     'max-nested-callbacks': 0,
+    // restrict the number of statements per line
+    // http://eslint.org/docs/rules/max-statements-per-line
+    'max-statements-per-line': [0, { 'max': 1 }],
     // require a capital letter for constructors
     'new-cap': [2, { 'newIsCap': true }],
     // disallow the omission of parentheses when invoking a constructor with no arguments
@@ -77,6 +83,9 @@ module.exports = {
     'no-mixed-spaces-and-tabs': 2,
     // disallow multiple empty lines and only one newline at the end
     'no-multiple-empty-lines': [2, { 'max': 2, 'maxEOF': 1 }],
+    // disallow negated conditions
+    // http://eslint.org/docs/rules/no-negated-condition
+    'no-negated-condition': 0,
     // disallow nested ternary expressions
     'no-nested-ternary': 2,
     // disallow use of the Object constructor
@@ -88,7 +97,7 @@ module.exports = {
     // disallow trailing whitespace at the end of lines
     'no-trailing-spaces': 2,
     // disallow dangling underscores in identifiers
-    'no-underscore-dangle': 0,
+    'no-underscore-dangle': [2, { 'allowAfterThis': false }],
     // disallow the use of Boolean literals in conditional expressions
     // also, prefer `a || b` over `a ? a : b`
     // http://eslint.org/docs/rules/no-unneeded-ternary
@@ -116,6 +125,9 @@ module.exports = {
     'quotes': [2, 'single', 'avoid-escape'],
     // require identifiers to match the provided regular expression
     'id-match': 0,
+    // do not require jsdoc
+    // http://eslint.org/docs/rules/require-jsdoc
+    'require-jsdoc': 0,
     // enforce spacing before and after semicolons
     'semi-spacing': [2, { 'before': false, 'after': true }],
     // require or disallow use of semicolons instead of ASI
@@ -125,7 +137,7 @@ module.exports = {
     // require or disallow space before blocks
     'space-before-blocks': 2,
     // require or disallow space before function opening parenthesis
-    // https://github.com/eslint/eslint/blob/master/docs/rules/space-before-function-paren.md
+    // http://eslint.org/docs/rules/space-before-function-paren
     'space-before-function-paren': [2, { 'anonymous': 'always', 'named': 'never' }],
     // require or disallow spaces inside parentheses
     'space-in-parens': [2, 'never'],

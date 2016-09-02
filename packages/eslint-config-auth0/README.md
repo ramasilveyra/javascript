@@ -10,25 +10,18 @@ We export three ESLint configurations for your usage.
 
 ### eslint-config-auth0
 
-Our default export contains all of our ESLint rules, including EcmaScript 6+
-and React. It requires `eslint` and `eslint-plugin-react`.
+Our default export contains all of our ESLint rules, including ECMAScript 6+ and React. It requires `eslint`, ``eslint-plugin-import`, `eslint-plugin-react`, and `eslint-plugin-jsx-a11y`.
 
-1. `npm install --save-dev eslint-config-auth0 eslint-plugin-react eslint`
+1. `npm install --save-dev eslint-config-auth0 eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y eslint`
 2. add `"extends": "auth0"` to your .eslintrc
 
 ### eslint-config-auth0/base
 
-Lints ES6+ but does not lint React. Requires `eslint`.
-
-1. `npm install --save-dev eslint-config-auth0 eslint`
-2. add `"extends": "auth0/base"` to your .eslintrc
+This entry point is deprecated. See [eslint-config-auth0-base](https://npmjs.com/eslint-config-auth0-base).
 
 ### eslint-config-auth0/legacy
 
-Lints ES5 and below. Only requires `eslint`.
-
-1. `npm install --save-dev eslint-config-auth0 eslint`
-2. add `"extends": "auth0/legacy"` to your .eslintrc
+This entry point is deprecated. See [eslint-config-auth0-base](https://npmjs.com/eslint-config-auth0-base).
 
 See [Auth0's Javascript styleguide](https://github.com/auth0/javascript) and
 the [ESlint config docs](http://eslint.org/docs/user-guide/configuring#extending-configuration-files)
@@ -36,9 +29,7 @@ for more information.
 
 ## Improving this config
 
-Consider adding test cases if you're making complicated rules changes, like
-anything involving regexes. Perhaps in a distant future, we could use literate
-programming to structure our README as test cases for our .eslintrc?
+Consider adding test cases if you're making complicated rules changes, like anything involving regexes. Perhaps in a distant future, we could use literate programming to structure our README as test cases for our .eslintrc?
 
 You can run tests with `npm test`.
 

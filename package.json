@@ -3,8 +3,12 @@
   "version": "2.0.0",
   "description": "A mostly reasonable approach to JavaScript.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish-all": "npm publish && cd ./packages/eslint-config-auth0 && npm publish"
+    "preinstall": "npm run install:config && npm run install:config:base",
+    "install:config": "cd packages/eslint-config-auth0 && npm install",
+    "install:config:base": "cd packages/eslint-config-auth0-base && npm install",
+    "test": "npm run --silent test:config && npm run --silent test:config:base",
+    "test:config": "cd packages/eslint-config-auth0; npm test",
+    "test:config:base": "cd packages/eslint-config-auth0-base; npm test"
   },
   "repository": {
     "type": "git",

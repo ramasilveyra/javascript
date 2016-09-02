@@ -3,6 +3,7 @@
 *A mostly reasonable approach to JavaScript*
 
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-auth0.svg)](https://www.npmjs.com/package/eslint-config-auth0)
+[![Downloads](https://img.shields.io/npm/dm/eslint-config-auth0-base.svg)](https://www.npmjs.com/package/eslint-config-auth0-base)
 
 Other Style Guides
  - [ES5](es5/)
@@ -805,8 +806,6 @@ Other Style Guides
 
     > Why? Syntactic sugar. It reads well when multiple functions are chained together.
 
-    > Why not? If you plan on returning an object.
-
     ```javascript
     // bad
     [1, 2, 3].map(number => {
@@ -822,6 +821,11 @@ Other Style Guides
       const nextNumber = number + 1;
       return `A string containing the ${nextNumber}.`;
     });
+
+    // good
+    [1, 2, 3].map((number, index) => ({
+      index: number
+    }));
     ```
 
   <a name="arrows--paren-wrap"></a><a name="8.3"></a>
@@ -2112,12 +2116,12 @@ Other Style Guides
     })()
 
     // good
-    (() => {
+    (function () {
       const name = 'Skywalker';
       return name;
     }());
 
-    // good (guards against the function becoming an argument when two files with IIFEs are concatenated)
+    // good, but legacy (guards against the function becoming an argument when two files with IIFEs are concatenated)
     ;(() => {
       const name = 'Skywalker';
       return name;
@@ -2209,7 +2213,7 @@ Other Style Guides
     // good
     const hasAge = Boolean(age);
 
-    // good
+    // best
     const hasAge = !!age;
     ```
 
@@ -2273,15 +2277,18 @@ Other Style Guides
     ```
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
-  - [22.4](#naming--leading-underscore) Use a leading underscore `_` when naming private properties. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
+  - [22.4](#naming--leading-underscore) Do not use trailing or leading underscores. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
+
+    > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won't count as breaking, or that tests aren't needed. tl;dr: if you want something to be “private”, it must not be observably present.
 
     ```javascript
     // bad
     this.__firstName__ = 'Panda';
     this.firstName_ = 'Panda';
+    this._firstName = 'Panda';
 
     // good
-    this._firstName = 'Panda';
+    this.firstName = 'Panda';
     ```
 
   <a name="naming--self-this"></a><a name="22.5"></a>
@@ -2313,24 +2320,39 @@ Other Style Guides
     ```
 
   <a name="naming--filename-matches-export"></a><a name="22.6"></a>
-  - [22.6](#naming--filename-matches-export) If your file exports a single class, your filename should be exactly the name of the class.
+  - [22.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export.
 
     ```javascript
-    // file contents
+    // file 1 contents
     class CheckBox {
       // ...
     }
     export default CheckBox;
 
+    // file 2 contents
+    export default function fortyTwo() { return 42; }
+
+    // file 3 contents
+    export default function insideDirectory() {}
+
     // in some other file
     // bad
-    import CheckBox from './checkBox';
+    import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
+    import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
+    import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
 
     // bad
-    import CheckBox from './check_box';
+    import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
+    import forty_two from './forty_two'; // snake_case import/filename, camelCase export
+    import inside_directory from './inside_directory'; // snake_case import, camelCase export
+    import index from './inside_directory/index'; // requiring the index file explicitly
+    import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
 
     // good
-    import CheckBox from './CheckBox';
+    import CheckBox from './CheckBox'; // PascalCase export/import/filename
+    import fortyTwo from './fortyTwo'; // camelCase export/import/filename
+    import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
+    // ^ supports both insideDirectory.js and insideDirectory/index.js
     ```
 
   <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
@@ -2344,7 +2366,7 @@ Other Style Guides
     ```
 
   <a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
-  - [22.8](#naming--PascalCase-singleton) Use PascalCase when you export a singleton / function library / bare object.
+  - [22.8](#naming--PascalCase-singleton) Use PascalCase when you export a constructor / class / singleton / function library / bare object.
 
     ```javascript
     const Auth0StyleGuide = {
@@ -2552,7 +2574,7 @@ Other Style Guides
 ## Testing
 
   <a name="testing--yup"></a><a name="28.1"></a>
-  - [28.1](#esting--yup) **Yup.**
+  - [28.1](#testing--yup) **Yup.**
 
     ```javascript
     function foo() {
@@ -2581,6 +2603,7 @@ Other Style Guides
   - [jQuery Find vs Context, Selector](http://jsperf.com/jquery-find-vs-context-sel/13)
   - [innerHTML vs textContent for script text](http://jsperf.com/innerhtml-vs-textcontent-for-script-text)
   - [Long String Concatenation](http://jsperf.com/ya-string-concat)
+  - [Are Javascript functions like `map()`, `reduce()`, and `filter()` optimized for traversing arrays?](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta)
   - Loading...
 
 **[⬆ back to top](#table-of-contents)**
@@ -2690,6 +2713,7 @@ Other Style Guides
   - **Ecosia**: [ecosia/javascript](https://github.com/ecosia/javascript)
   - **Evernote**: [evernote/javascript-style-guide](https://github.com/evernote/javascript-style-guide)
   - **Evolution Gaming**: [evolution-gaming/javascript](https://github.com/evolution-gaming/javascript)
+  - **EvozonJs**: [evozonjs/javascript](https://github.com/evozonjs/javascript)
   - **ExactTarget**: [ExactTarget/javascript](https://github.com/ExactTarget/javascript)
   - **Expensify** [Expensify/Style-Guide](https://github.com/Expensify/Style-Guide/blob/master/javascript.md)
   - **Flexberry**: [Flexberry/javascript-style-guide](https://github.com/Flexberry/javascript-style-guide)

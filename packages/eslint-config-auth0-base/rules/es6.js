@@ -6,11 +6,13 @@ module.exports = {
     'ecmaVersion': 6,
     'sourceType': 'module',
     'ecmaFeatures': {
-      'jsx': true,
       'generators': false,
       'objectLiteralDuplicateProperties': false
     }
   },
+  'plugins': [
+    'import'
+  ],
   'rules': {
     // enforces no braces where they can be omitted
     // http://eslint.org/docs/rules/arrow-body-style
@@ -18,7 +20,7 @@ module.exports = {
     // require parens in arrow function arguments
     'arrow-parens': 0,
     // require space before/after arrow function's arrow
-    // https://github.com/eslint/eslint/blob/master/docs/rules/arrow-spacing.md
+    // http://eslint.org/docs/rules/arrow-spacing
     'arrow-spacing': [2, { 'before': true, 'after': true }],
     // disallow trailing commas in object literals
     'comma-dangle': [2, 'never'],
@@ -57,7 +59,7 @@ module.exports = {
     // http://eslint.org/docs/rules/no-useless-constructor
     'no-useless-constructor': 2,
     // require method and property shorthand syntax for object literals
-    // https://github.com/eslint/eslint/blob/master/docs/rules/object-shorthand.md
+    // http://eslint.org/docs/rules/object-shorthand
     'object-shorthand': [2, 'always'],
     // suggest using arrow functions as callbacks
     'prefer-arrow-callback': 2,
@@ -83,6 +85,57 @@ module.exports = {
     'template-curly-spacing': 2,
     // enforce spacing around the * in yield* expressions
     // http://eslint.org/docs/rules/yield-star-spacing
-    'yield-star-spacing': [2, 'after']
+    'yield-star-spacing': [2, 'after'],
+    // disallow invalid exports, e.g. multiple defaults
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/export.md
+    'import/export': 2,
+    // ensure imports point to files/modules that can be resolved
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
+    'import/no-unresolved': [2, { 'commonjs': true }],
+    // ensure default import coupled with default export
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/default.md#when-not-to-use-it
+    'import/default': 0,
+    // ensure named imports coupled with named exports
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/named.md#when-not-to-use-it
+    'import/named': 0,
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/namespace.md
+    'import/namespace': 0,
+    // do not allow a default import name to match a named export
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default.md
+    // TODO: enable
+    'import/no-named-as-default': 0,
+    // disallow require()
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-commonjs.md
+    'import/no-commonjs': 0,
+    // disallow AMD require/define
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-amd.md
+    // TODO: enable
+    'import/no-amd': 0,
+    // disallow non-import statements appearing before import statements
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/imports-first.md
+    // TODO: enable?
+    'import/imports-first': [0, 'absolute-first'],
+    // disallow duplicate imports
+    // TODO: enable
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
+    'import/no-duplicates': 0,
+    // disallow use of jsdoc-marked-deprecated imports
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-deprecated.md
+    'import/no-deprecated': 0,
+    // disallow namespace imports
+    // TODO: enable?
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-namespace.md
+    'import/no-namespace': 0,
+    // warn on accessing default export property names that are also named exports
+    // TODO: enable?
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default-member.md
+    'import/no-named-as-default-member': 0
+  },
+  'settings': {
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.json']
+      }
+    }
   }
 };

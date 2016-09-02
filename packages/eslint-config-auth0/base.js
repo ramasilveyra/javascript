@@ -1,7 +1,4 @@
 module.exports = {
-  extends: [
-    'eslint-config-auth0/legacy',
-    'eslint-config-auth0/rules/es6'
-  ].map(require.resolve),
+  extends: ['eslint-config-auth0-base'].map(require.resolve),
   rules: {}
 };
