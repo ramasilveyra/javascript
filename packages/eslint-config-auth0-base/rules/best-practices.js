@@ -42,8 +42,9 @@ module.exports = {
     // http://eslint.org/docs/rules/no-empty-function
     'no-empty-function': [2, {
       'allow': [
+        'arrowFunctions',
         'functions',
-        'arrowFunctions'
+        'methods'
       ]
     }],
     // disallow empty destructuring patterns
