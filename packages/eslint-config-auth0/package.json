@@ -45,6 +45,7 @@
   },
   "homepage": "https://github.com/auth0/javascript",
   "dependencies": {
+    "eslint-config-airbnb": "^10.0.1",
     "eslint-config-auth0-base": "^5.0.0"
   },
   "devDependencies": {

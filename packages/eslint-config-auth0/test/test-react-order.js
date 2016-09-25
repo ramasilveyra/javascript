@@ -1,8 +1,8 @@
 import test from 'tape';
 import { CLIEngine } from 'eslint';
+import reactRules from 'eslint-config-airbnb/rules/react';
+import reactA11yRules from 'eslint-config-airbnb/rules/react-a11y';
 import eslintrc from '../';
-import reactRules from '../rules/react';
-import reactA11yRules from '../rules/react-a11y';
 
 const cli = new CLIEngine({
   useEslintrc: false,

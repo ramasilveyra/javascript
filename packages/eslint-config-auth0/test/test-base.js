@@ -5,14 +5,17 @@ import test from 'tape';
 const base = require('../base');
 
 const files = { base };
+const rulesPath = path.join(__dirname, '../rules');
 
-fs.readdirSync(path.join(__dirname, '../rules')).forEach(name => {
-  if (name === 'react.js' || name === 'react-a11y.js') {
-    return;
-  }
+if (fs.existsSync(rulesPath)) {
+  fs.readdirSync(rulesPath).forEach(name => {
+    if (name === 'react.js' || name === 'react-a11y.js') {
+      return;
+    }
 
-  files[name] = require(`../rules/${name}`); // eslint-disable-line global-require
-});
+    files[name] = require(`../rules/${name}`); // eslint-disable-line global-require
+  });
+}
 
 Object.keys(files).forEach(name => {
   const config = files[name];
