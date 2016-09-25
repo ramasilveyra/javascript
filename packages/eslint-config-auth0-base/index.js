@@ -1,18 +1,14 @@
 module.exports = {
   extends: [
-    './rules/best-practices',
+    'eslint-config-airbnb-base',
     './rules/errors',
-    './rules/node',
-    './rules/style',
-    './rules/variables',
-    './rules/es6',
-    './rules/imports',
+    './rules/variables'
   ].map(require.resolve),
   parserOptions: {
     ecmaVersion: 7,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   rules: {
-    strict: 'error',
+    strict: 'error'
   }
 };
