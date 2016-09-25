@@ -1,3 +1,7 @@
+6.0.0 / 2016-09-25
+==================
+- Only maintain our custom changes for eslint-config-auth0
+
 5.0.0 / 2016-09-02
 ==================
 - Merge commits from [eslint-config-airbnb v10.0.1](https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb/CHANGELOG.md#1001--2016-08-12) state and solve conflicts.
