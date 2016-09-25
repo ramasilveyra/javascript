@@ -1,3 +1,7 @@
+6.0.1 / 2016-09-25
+==================
+- Update eslint-config-auth0-base to v6.0.0
+
 6.0.0 / 2016-09-25
 ==================
 - Only maintain our custom changes for eslint-config-auth0
